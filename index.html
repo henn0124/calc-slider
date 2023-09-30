@@ -11,7 +11,7 @@
 
     <br>
 
-    <label for="royaltyRate">Royalty Rate (8%):</label>
+    <label for="royaltyRate">Royalty Rate:</label>
     <input type="text" id="royaltyRate" value="8%" disabled>
 
     <br>
@@ -23,7 +23,7 @@
     <br>
 
     <h2>Results:</h2>
-    <p>Var4 (Monthly Revenue): $<span id="resultVar4">400000.00</span></p>
+    <p>Monthly Revenue: $<span id="resultVar4">400000.00</span></p>
 
     <script>
         function calculate() {
@@ -33,7 +33,7 @@
             var orderVolume = parseInt(document.getElementById("orderVolume").value);
 
             // Calculate Variable 4 (Monthly Revenue)
-            var resultVar4 = (averageItemCost * royaltyRate * orderVolume).toFixed(2);
+            var resultVar4 = (averageItemCost * (royaltyRate/100) * orderVolume).toFixed(2);
 
             // Update the result display for Variable 4
             document.getElementById("resultVar4").textContent = resultVar4;
