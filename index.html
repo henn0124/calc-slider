@@ -2,12 +2,39 @@
 <html>
 <head>
     <title>Financial Analysis Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="number"],
+        input[type="text"],
+        input[type="range"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .results {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Financial Analysis Calculator</h1>
 
     <label for="averageItemCost">Average Item MSRP:</label>
-    <input type="number" id="averageItemCost" placeholder="Enter Average Item Cost" onchange="calculate()" step="100" value="20">
+    <input type="number" id="averageItemCost" placeholder="Enter Average Item Cost" onchange="calculate()" step="1" value="20">
 
     <br>
 
@@ -20,10 +47,10 @@
     <input type="range" id="orderVolume" min="100" max="5000" value="2500" oninput="updateOrderVolumeDisplay(); calculate()">
     <span id="orderVolumeDisplay">2500</span>
 
-    <br>
-
-    <h2>Results:</h2>
-    <p>Monthly Revenue: $<span id="resultVar4">400000.00</span></p>
+    <div class="results">
+        <h2>Results:</h2>
+        <p>Monthly Revenue: $<span id="resultVar4">400000.00</span></p>
+    </div>
 
     <script>
         function calculate() {
@@ -50,6 +77,7 @@
     </script>
 </body>
 </html>
+
 
 
 
