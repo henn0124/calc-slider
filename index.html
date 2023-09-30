@@ -17,7 +17,7 @@
     <br>
 
     <label for="orderVolume">Order Volume:</label>
-    <input type="range" id="orderVolume" min="100" max="5000" value="2500" oninput="calculate()">
+    <input type="range" id="orderVolume" min="100" max="5000" value="2500" oninput="updateOrderVolumeDisplay(); calculate()">
     <span id="orderVolumeDisplay">2500</span>
 
     <br>
@@ -39,11 +39,18 @@
             document.getElementById("resultVar4").textContent = resultVar4;
         }
 
+        function updateOrderVolumeDisplay() {
+            // Update the orderVolumeDisplay with the current value of orderVolume
+            var orderVolume = document.getElementById("orderVolume").value;
+            document.getElementById("orderVolumeDisplay").textContent = orderVolume;
+        }
+
         // Initialize the calculator
         calculate();
     </script>
 </body>
 </html>
+
 
 
 
