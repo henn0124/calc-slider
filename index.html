@@ -8,47 +8,63 @@
             margin: 0;
             padding: 20px;
         }
-        h1 {
-            text-align: center;
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
         }
-        label {
-            display: block;
-            margin-bottom: 10px;
+
+        .calculator {
+            flex: 1;
+            margin-right: 20px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
         }
-        input[type="number"],
-        input[type="text"],
-        input[type="range"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
+
         .results {
             background-color: #f0f0f0;
             padding: 10px;
             border-radius: 5px;
             margin-top: 20px;
         }
+
+        h1, h2 {
+            text-align: right;
+        }
     </style>
 </head>
 <body>
-    <h2>Financial Analysis Calculator</h2>
+    <div class="container">
+        <div class="calculator">
+            <h1>Financial Analysis Calculator</h1>
 
-    <label for="averageItemCost">Average Item MSRP:</label>
-    <input type="number" id="averageItemCost" placeholder="Enter Average Item Cost" onchange="calculate()" step="1" value="20">
+            <label for="averageItemCost">Average Item MSRP:</label>
+            <input type="number" id="averageItemCost" placeholder="Enter Average Item Cost" onchange="calculate()" step="1" value="20">
 
-    <br>
+            <br>
 
-    <label for="royaltyRate">Royalty Rate:</label>
-    <input type="text" id="royaltyRate" value="8%" disabled>
+            <label for="royaltyRate">Royalty Rate:</label>
+            <input type="text" id="royaltyRate" value="8%" disabled>
 
-    <br>
+            <br>
 
-    <label for="orderVolume">Order Volume:</label>
-    <input type="range" id="orderVolume" min="100" max="5000" value="2500" oninput="updateOrderVolumeDisplay(); calculate()">
-    <span id="orderVolumeDisplay">2500</span>
+            <label for="orderVolume">Order Volume:</label>
+            <input type="range" id="orderVolume" min="100" max="5000" value="2500" oninput="updateOrderVolumeDisplay(); calculate()">
+            <span id="orderVolumeDisplay">2500</span>
 
-    <div class="results">
-        <h3>Monthly Revenue: $<span id="resultVar4">400000.00</span></h3>
+            <div class="results">
+                <h2>Results:</h2>
+                <p>Monthly Revenue: $<span id="resultVar4">400000.00</span></p>
+            </div>
+        </div>
+
+        <div class="text">
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <p>Additional text content can go here.</p>
+        </div>
     </div>
 
     <script>
