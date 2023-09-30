@@ -20,12 +20,13 @@
     <input type="range" id="orderVolume" min="100" max="5000" value="2500" oninput="calculate()">
     <span id="orderVolumeDisplay">2500</span>
 
-    <br><br>
+    <br>
 
     <h2>Results:</h2>
     <p>Var1 (Average Item Cost): $<span id="resultVar1">20.00</span></p>
     <p>Var2 (Royalty Rate): <span id="resultVar2">8%</span></p>
     <p>Var3 (Order Volume): <span id="resultVar3">2500</span></p>
+    <p>Var4 (Monthly Revenue): $<span id="resultVar4">400000.00</span></p>
 
     <script>
         function calculate() {
@@ -38,11 +39,13 @@
             var resultVar1 = averageItemCost.toFixed(2);
             var resultVar2 = royaltyRate.toFixed(2) + "%";
             var resultVar3 = orderVolume;
+            var resultVar4 = (averageItemCost * royaltyRate * orderVolume).toFixed(2);
 
             // Update result displays
             document.getElementById("resultVar1").textContent = resultVar1;
             document.getElementById("resultVar2").textContent = resultVar2;
             document.getElementById("resultVar3").textContent = resultVar3;
+            document.getElementById("resultVar4").textContent = resultVar4;
             document.getElementById("orderVolumeDisplay").textContent = orderVolume;
         }
 
@@ -51,5 +54,6 @@
     </script>
 </body>
 </html>
+
 
 
