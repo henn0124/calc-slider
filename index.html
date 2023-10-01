@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /* Common styles */
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
         .container-calc {
@@ -12,6 +17,7 @@
             justify-content: space-between;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
         }
 
         .calculator-calc {
@@ -23,7 +29,6 @@
             border-radius: 10px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end; /* Right-justify the content */
         }
 
         .calculator-calc h1 {
@@ -31,22 +36,40 @@
             margin-bottom: 15px;
         }
 
+        /* Define table-like structure using CSS Grid */
+        .calculator-table {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-gap: 10px;
+        }
+
+        .calculator-table > div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Right-align labels and align text with input elements */
         label {
             font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 18px; /* Increase label font size */
+            font-size: 18px;
+            text-align: right;
+            margin-bottom: 0;
+        }
+
+        /* Adjust margin for the results box */
+        .results-box {
+            margin-top: auto;
         }
 
         input[type="number"],
         input[type="text"],
         input[type="range"] {
             width: 100%;
-            padding: 12px; /* Increase input padding */
-            margin-bottom: 15px;
+            padding: 12px;
             border: 1px solid #ccc;
-            font-size: 18px; /* Increase input text font size */
+            font-size: 18px;
             border-radius: 5px;
-            max-width: 100px; /* Maximum width set to 100px */
+            max-width: 100px;
         }
 
         input[type="range"] {
@@ -60,17 +83,13 @@
             margin-top: 20px;
             text-align: center;
             display: flex;
-            justify-content: center; /* Center the content horizontally */
-            align-items: center; /* Center the content vertically */
-        }
-
-        .results-box {
-            flex: 1;
+            justify-content: center;
+            align-items: center;
         }
 
         .results h2 {
             font-size: 24px;
-            margin: 0; /* Remove default margin to avoid spacing */
+            margin: 0;
         }
 
         .results span {
@@ -80,12 +99,37 @@
 
         p {
             color: #666;
-            font-size: 20px; /* Increase paragraph font size */
+            font-size: 20px;
+            margin: 0;
         }
 
         /* Add "$" symbol before input[type="number"] */
         input[type="number"]::before {
             content: "$";
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .container-calc {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .calculator-calc {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            input[type="number"],
+            input[type="text"],
+            input[type="range"] {
+                max-width: none;
+            }
+
+            /* Adjust the label alignment for smaller screens if needed */
+            label {
+                text-align: left;
+            }
         }
     </style>
 </head>
@@ -94,25 +138,23 @@
         <div class="calculator-calc">
             <h1>Revenue Calculator</h1>
 
-            <div>
-                <label for="averageItemCost">Average Item MSRP:</label>
-                <input type="number" id="averageItemCost" placeholder="Enter Average Item Cost" onchange="calculate()" step="1" value="25">
-            </div>
-
-            <div>
-                <label for="royaltyRate">Royalty Rate:</label>
-                <input type="text" id="royaltyRate" value="8%" disabled>
-            </div>
-
-            <div>
-                <label for="orderVolume">Order Volume:</label>
-                <input type="range" id="orderVolume" min="100" max="5000" value="2500" oninput="updateOrderVolumeDisplay(); calculate()">
-                <span id="orderVolumeDisplay">2500</span>
-            </div>
-
-            <div class="results">
-                <div class="results-box">
-                    <h2>Monthly Revenue:$<span id="monthlyRevenue">400000.00</span></h2>
+            <!-- Table-like structure using CSS Grid -->
+            <div class="calculator-table">
+                <div>
+                    <label for="averageItemCost">Average Item MSRP:</label>
+                    <label for="royaltyRate">Royalty Rate:</label>
+                    <label for="orderVolume">Order Volume:</label>
+                    <div class="results">
+                        <label for="monthlyRevenue">Monthly Revenue:</label>
+                    </div>
+                </div>
+                <div>
+                    <input type="number" id="averageItemCost" aria-label="Average Item MSRP" placeholder="Enter Average Item Cost" onchange="calculate()" step="1" value="25">
+                    <input type="text" id="royaltyRate" aria-label="Royalty Rate" value="8%" disabled>
+                    <input type="range" id="orderVolume" aria-label="Order Volume" min="100" max="5000" value="2500" oninput="updateOrderVolumeDisplay(); calculate()">
+                    <div class="results-box">
+                        <h2>$<span id="monthlyRevenue">400,000.00</span></h2>
+                    </div>
                 </div>
             </div>
         </div>
@@ -124,6 +166,11 @@
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Initialize the calculator
+            calculate();
+        });
+
         function calculate() {
             // Get input values
             var averageItemCost = parseFloat(document.getElementById("averageItemCost").value);
@@ -131,7 +178,7 @@
             var orderVolume = parseInt(document.getElementById("orderVolume").value);
 
             // Calculate Variable 4 (Monthly Revenue)
-            var resultVar4 = (averageItemCost * (royaltyRate/100) * orderVolume).toFixed(2);
+            var resultVar4 = (averageItemCost * (royaltyRate / 100) * orderVolume).toFixed(2);
 
             // Update the result display for Monthly Revenue
             document.getElementById("monthlyRevenue").textContent = resultVar4;
@@ -142,9 +189,6 @@
             var orderVolume = document.getElementById("orderVolume").value;
             document.getElementById("orderVolumeDisplay").textContent = orderVolume;
         }
-
-        // Initialize the calculator
-        calculate();
     </script>
 </body>
 </html>
