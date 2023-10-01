@@ -69,11 +69,36 @@
             border: 1px solid #ccc;
             font-size: 18px;
             border-radius: 5px;
-            max-width: 100px;
+            max-width: 300px; /* Set a maximum width of 300px */
         }
 
-        input[type="range"] {
-            margin-bottom: 0;
+        /* Increase the size of the slider thumb */
+        input[type="range"]::-webkit-slider-thumb {
+            width: 30px;
+            height: 30px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 50%;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 30px;
+            height: 30px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 50%;
+        }
+
+        input[type="range"]::-ms-thumb {
+            width: 30px;
+            height: 30px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 50%;
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+            height: 5px; /* Adjust the height of the track */
         }
 
         .results {
@@ -141,11 +166,11 @@
             <!-- Table-like structure using CSS Grid -->
             <div class="calculator-table">
                 <div>
-                    <label for="averageItemCost">Average Item MSRP:</label>
-                    <label for="royaltyRate">Royalty Rate:</label>
-                    <label for="orderVolume">Order Volume:</label>
+                    <div><label for="averageItemCost">Average Item MSRP:</label></div>
+                    <div><label for="royaltyRate">Royalty Rate:</label></div>
+                    <div><label for="orderVolume">Order Volume:</label></div>
                     <div class="results">
-                        <label for="monthlyRevenue">Monthly Revenue:</label>
+                        <div><label for="monthlyRevenue">Monthly Revenue:</label></div>
                     </div>
                 </div>
                 <div>
@@ -192,3 +217,4 @@
     </script>
 </body>
 </html>
+
