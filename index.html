@@ -27,18 +27,18 @@
                 <label for="averageItemCost">Average Item MSRP:</label>
                 <input type="number" id="averageItemCost" aria-label="Average Item MSRP" placeholder="Enter Average Item Cost" onchange="calculate()" step="1" value="25">
             </div>
-
+            <br></br>
             <div>
                 <label for="royaltyRate">Royalty Rate:</label>
                 <input type="text" id="royaltyRate" aria-label="Royalty Rate" value="8%" disabled>
             </div>
-
+            <br></br>
             <div>
                 <label for="orderVolume">Order Volume:</label>
                 <input type="range" id="orderVolume" aria-label="Order Volume" min="100" max="5000" value="2500" oninput="updateOrderVolumeDisplay(); calculate()">
                 <span id="orderVolumeDisplay">2500</span>
             </div>
-
+            <br></br>
             <div class="results">
                 <div class="results-box">
                     <h2>Monthly Revenue: $<span id="monthlyRevenue">400,000.00</span></h2>
