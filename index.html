@@ -3,14 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        /* ... Your CSS styles ... */
+        /* CSS grid for organizing labels and inputs */
+        .calculator-calc {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 10px;
+        }
+
+        /* Style for labels */
+        .calculator-calc label {
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        /* ... Your other CSS styles ... */
     </style>
 </head>
 <body>
     <div class="container-calc">
+        <h1>Revenue Calculator</h1>
         <div class="calculator-calc">
-            <h1>Revenue Calculator</h1>
-
             <div>
                 <label for="averageItemCost">Average Item MSRP:</label>
                 <input type="number" id="averageItemCost" aria-label="Average Item MSRP" placeholder="Enter Average Item Cost" onchange="calculate()" step="1" value="25">
@@ -32,11 +44,6 @@
                     <h2>Monthly Revenue: $<span id="monthlyRevenue">400,000.00</span></h2>
                 </div>
             </div>
-        </div>
-
-        <div class="text">
-            <h2>Income Calculator</h2>
-            <p>Additional text content can go here.</p>
         </div>
     </div>
 
